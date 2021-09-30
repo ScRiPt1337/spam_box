@@ -10,6 +10,8 @@ from json import dumps
 from ConnectionManager import ConnectionManager
 from starlette.staticfiles import StaticFiles
 from json import loads
+import binascii
+import os
 
 app = FastAPI()
 app.mount("/home", StaticFiles(directory="hacksec-webmail",
@@ -43,7 +45,7 @@ class User(BaseModel):
 
 
 class Settings(BaseModel):
-    authjwt_secret_key: str = "NEWDATA"
+    authjwt_secret_key: str = binascii.hexlify(os.urandom(32)).decode()
 
 
 @AuthJWT.load_config
