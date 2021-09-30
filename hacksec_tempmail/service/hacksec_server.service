@@ -7,7 +7,7 @@ Type=hacksec_server
 Restart=always
 RestartSec=1
 User=root
-ExecStart=/usr/bin/env python3 /opt/hacksec_tempmail/server.py
+ExecStart=/usr/bin/env python3 /opt/hacksec_tempmail/hacksec_tempmail/server.py
 
 [Install]
 WantedBy=multi-user.target

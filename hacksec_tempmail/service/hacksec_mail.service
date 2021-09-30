@@ -7,7 +7,7 @@ Type=hacksec_mail
 Restart=always
 RestartSec=1
 User=root
-ExecStart=/bin/bash /opt/hacksec_tempmail/runner.sh
+ExecStart=/bin/bash /opt/hacksec_tempmail/hacksec_tempmail/runner.sh
 
 [Install]
 WantedBy=multi-user.target
