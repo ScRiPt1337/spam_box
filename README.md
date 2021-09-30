@@ -1,11 +1,21 @@
 # spam_box
-![Screenshot](https://github.com/ScRiPt1337/spam_box/blob/master/banner.png)
+![Screenshot](https://raw.githubusercontent.com/ScRiPt1337/spam_box/main/banner.png)
 
 spam_box is a self hosted temp mail service by hacksec
+
+### Requirement
+
+- python3
+- open port 25 and 6660
+- root access in a vps 
 
 ### How to install in linux
 ```bash
 curl -s -L https://raw.githubusercontent.com/ScRiPt1337/spam_box/main/install.sh | bash
 ```
+
+### Dashboard
+- visit : http://{your server url}:6660
+- defualt username/password is : hacksec/hacksec
 
 visit our website : https://www.hacksec.in
