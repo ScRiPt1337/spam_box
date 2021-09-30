@@ -177,7 +177,6 @@
             ws.onmessage = (event) => {
                 let email_list = document.getElementById('email_list')
                 //console.log(event.data)
-                email_list.innerHTML = ""
                 let data = JSON.parse(event.data)
                 console.log(data["email"])
                 data["email"].map(function (email) {
@@ -225,7 +224,7 @@
             $("#exampleModal").modal('show');
         }
         setInterval(function () {
-            FetchEmail(Token)
+            window.location.reload()
         }, 4000);
     </script>
     <script src="./bootstrap.bundle.min.js"></script>
