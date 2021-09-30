@@ -1,0 +1,13 @@
+[Unit]
+Description=hacksec smtp server
+After=hacksec_server.target
+StartLimitIntervalSec=0
+[Service]
+Type=hacksec_mail
+Restart=always
+RestartSec=1
+User=root
+ExecStart=/bin/bash /opt/hacksec_tempmail/runner.sh
+
+[Install]
+WantedBy=multi-user.target

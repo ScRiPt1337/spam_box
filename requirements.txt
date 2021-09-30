@@ -1,0 +1,5 @@
+uvicorn[standard]
+fastapi
+fastapi_jwt_auth
+wsproto
+aiofiles
