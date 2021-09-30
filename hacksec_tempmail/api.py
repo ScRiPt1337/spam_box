@@ -21,7 +21,7 @@ manager = ConnectionManager()
 
 config = {}
 try:
-    with open("config.json", "r") as config:
+    with open("/opt/hacksec_tempmail/hacksec_tempmail/config.json", "r") as config:
         config = loads(config.read())
 except:
     print('No config file found. Please create a config.json file.')
