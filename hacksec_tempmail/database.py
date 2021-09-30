@@ -4,7 +4,7 @@ from os import path, getcwd
 
 class db:
     def __init__(self, db='hacksec_mail.db'):
-        self.conn = sqlite3.connect(path.join("/opt/hacksec_tempmail", "db", db))
+        self.conn = sqlite3.connect(path.join("/opt/hacksec_tempmail/hacksec_tempmail", "db", db))
         self.cur = self.conn.cursor()
         self.cur.execute("""
         CREATE TABLE IF NOT EXISTS hacksec (
