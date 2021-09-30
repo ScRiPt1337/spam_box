@@ -134,6 +134,7 @@
 
     <script>
         let Token = ""
+        let IDS = []
         let emailid = document.getElementById("emailid")
         emailid.appendChild(document.createTextNode(`Email address : any_username@${window.location.hostname}`))
         if (localStorage.getItem("access_token") == null) {
@@ -176,10 +177,11 @@
             ws = new WebSocket(`ws://${window.location.hostname}:6660/mailbox?token=${Token}`);
             ws.onmessage = (event) => {
                 let email_list = document.getElementById('email_list')
-                //console.log(event.data)
                 let data = JSON.parse(event.data)
-                console.log(data["email"])
                 data["email"].map(function (email) {
+                    if (IDS.includes(email[0])) {
+                        return true
+                    }
                     let modalbody = document.getElementById('modalbody')
                     var div = document.createElement("div");
                     var div1 = document.createElement("div");
@@ -203,6 +205,7 @@
                     button.innerHTML = "Delete"
                     button.onclick = function () { DeleteEmail(email[0], Token) }
                     Delele.appendChild(button)
+                    IDS.push(email[0])
                 })
 
             }
@@ -217,14 +220,12 @@
         function OpenModal(email) {
             let modalbody = document.getElementById('modalbody')
             let modalheader = document.getElementById('exampleModalLabel')
-            let div = document.createElement("div");
-            div.innerHTML = email[5]
-            modalbody.appendChild(div)
-            modalheader.appendChild(document.createTextNode(email[4]))
+            modalbody.innerHTML = email[5]
+            modalheader.innerText = email[4]
             $("#exampleModal").modal('show');
         }
         setInterval(function () {
-            window.location.reload()
+            FetchEmail(Token)
         }, 4000);
     </script>
     <script src="./bootstrap.bundle.min.js"></script>
