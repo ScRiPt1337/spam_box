@@ -18,4 +18,6 @@ curl -s -L https://raw.githubusercontent.com/ScRiPt1337/spam_box/main/install.sh
 - visit : http://{your server url}:6660
 - defualt username/password is : hacksec/hacksec
 
-visit our website : https://www.hacksec.in
+### Contact info 
+- Email : script@hacksec.in
+- visit our website : https://www.hacksec.in
