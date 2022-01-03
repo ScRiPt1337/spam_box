@@ -21,5 +21,6 @@ class Mail:
         formated_email.subject = msg["subject"]
         formated_email.to = msg["to"]
         for payload in msg.get_payload():
-            formated_email.content += payload.get_payload()
+            charset_type = str(payload.get_content_charset())
+            formated_email.content += payload.get_payload(decode=True).decode(charset_type)
         return formated_email
