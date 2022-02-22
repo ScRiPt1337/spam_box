@@ -28,6 +28,9 @@ curl -s -L https://raw.githubusercontent.com/ScRiPt1337/spam_box/main/install.sh
 ### Live Demo
 - http://hacksec.ml:6660/home/
 
+### REST API docs
+- http://hacksec.ml:6660/docs
+
 ### Contact info 
 - Email : script@hacksec.in
 - visit our website : https://www.hacksec.in
