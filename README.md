@@ -14,6 +14,11 @@ spam_box is a self hosted temp mail service by hacksec
 curl -s -L https://raw.githubusercontent.com/ScRiPt1337/spam_box/main/install.sh | bash
 ```
 
+### How to uninstall
+```bash
+curl -s -L https://raw.githubusercontent.com/ScRiPt1337/spam_box/main/uninstall.sh | bash
+```
+
 ### Dashboard
 - visit : http://{your server url}:6660
 - defualt username/password is : hacksec/hacksec
