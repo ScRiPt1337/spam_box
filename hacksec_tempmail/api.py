@@ -1,3 +1,4 @@
+from unicodedata import name
 from fastapi import FastAPI, WebSocket, Depends, Request, HTTPException, Query
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse, RedirectResponse
@@ -14,7 +15,7 @@ from json import loads
 import binascii
 import os
 
-app = FastAPI()
+app = FastAPI(name="hacksec_tempmail", title="hacksec_tempmail", description="hacksec_tempmail", version="1.0")
 auth_schema = HTTPBearer(auto_error=False)
 app.mount("/home", StaticFiles(directory="hacksec-webmail",
           html=True), name="hacksec-webmail")
@@ -184,7 +185,7 @@ async def mailbox_delete_all(Authorize: AuthJWT = Depends(auth_schema)):
 
 
 @app.post('/login')
-def login(user: User, Authorize: AuthJWT = Depends(auth_schema)):
+def login(user: User, Authorize: AuthJWT = Depends()):
     if user.username != auth["username"] or user.password != auth["password"]:
         raise HTTPException(status_code=401, detail="Bad username or password")
 
