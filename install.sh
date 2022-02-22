@@ -9,7 +9,7 @@ echo "1. Install"
 echo "2. Uninstall"
 echo -n "Enter a number: "
 read VAR
-if [ $VAR == 1 ]; then
+if [[ $VAR == 1 ]]; then
    echo "Installing..."
    sudo apt-get update
    sudo apt-get install python3 python3-pip git uvicorn -y
@@ -20,7 +20,7 @@ if [ $VAR == 1 ]; then
    sudo systemctl start hacksec_server.service
    sudo systemctl enable hacksec_mail.service
    sudo systemctl start hacksec_mail.service
-elif [ $VAR == 2 ]; then
+elif [[ $VAR == 2 ]]; then
    echo "Uninstalling..."
    rm -rf /opt/hacksec_tempmail/
    sudo systemctl stop hacksec_mail.service
