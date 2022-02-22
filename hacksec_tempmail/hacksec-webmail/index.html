@@ -41,20 +41,9 @@
     >
       <a
         class="navbar-brand col-md-3 col-lg-2 me-0 px-3"
-        href="https://hacksec.in"
+        onclick="window.open('https://hacksec.in/')"
         >HACKSEC</a
       >
-      <button
-        class="navbar-toggler position-absolute d-md-none collapsed"
-        type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#sidebarMenu"
-        aria-controls="sidebarMenu"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>
       <!-- Place this tag where you want the button to render. -->
       <!-- Place this tag where you want the button to render. -->
       <a
@@ -65,6 +54,11 @@
         data-show-count="true"
         aria-label="Fork ScRiPt1337/spam_box on GitHub"
         >Fork</a
+      >
+      <a
+        class="navbar-brand col-md-3 col-lg-2 me-0 px-3"
+        onclick="window.localStorage.clear();window.location.reload();"
+        >Logout</a
       >
     </header>
 
