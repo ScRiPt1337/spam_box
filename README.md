@@ -1,7 +1,7 @@
 # spam_box
 ![Screenshot](https://raw.githubusercontent.com/ScRiPt1337/spam_box/main/banner.png)
 
-spam_box is a self hosted temp mail service by hacksec
+spam_box is a self hosted temp mail service by hacksec for hackers
 
 ### Requirement
 
