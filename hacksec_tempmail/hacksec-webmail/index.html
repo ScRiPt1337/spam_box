@@ -1,55 +1,76 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Self hosted temp mail server">
-    <meta name="author" content="script1337x">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Self hosted temp mail server" />
+    <meta name="author" content="script1337x" />
     <title>hacksec - tempmail</title>
 
-    <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/dashboard/">
-
-
+    <link
+      rel="canonical"
+      href="https://getbootstrap.com/docs/5.1/examples/dashboard/"
+    />
 
     <!-- Bootstrap core CSS -->
-    <link href="./bootstrap.min.css" rel="stylesheet">
+    <link href="./bootstrap.min.css" rel="stylesheet" />
 
     <style>
-        .bd-placeholder-img {
-            font-size: 1.125rem;
-            text-anchor: middle;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            user-select: none;
-        }
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
 
-        @media (min-width: 768px) {
-            .bd-placeholder-img-lg {
-                font-size: 3.5rem;
-            }
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
         }
+      }
     </style>
 
-
     <!-- Custom styles for this template -->
-    <link href="dashboard.css" rel="stylesheet">
-</head>
+    <link href="dashboard.css" rel="stylesheet" />
+  </head>
 
-<body>
-
-    <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
-        <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="#">HACKSEC</a>
-        <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse"
-            data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false"
-            aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+  <body>
+    <header
+      class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow"
+    >
+      <a
+        class="navbar-brand col-md-3 col-lg-2 me-0 px-3"
+        href="https://hacksec.in"
+        >HACKSEC</a
+      >
+      <button
+        class="navbar-toggler position-absolute d-md-none collapsed"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#sidebarMenu"
+        aria-controls="sidebarMenu"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <!-- Place this tag where you want the button to render. -->
+      <!-- Place this tag where you want the button to render. -->
+      <a
+        class="github-button"
+        href="https://github.com/ScRiPt1337/spam_box/fork"
+        data-color-scheme="no-preference: dark; light: dark; dark: dark;"
+        data-size="large"
+        data-show-count="true"
+        aria-label="Fork ScRiPt1337/spam_box on GitHub"
+        >Fork</a
+      >
     </header>
 
     <div class="container-fluid">
-        <div class="row">
-            <!-- <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+      <div class="row">
+        <!-- <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
                 <div class="position-sticky pt-3">
                     <ul class="nav flex-column">
                         <li class="nav-item">
@@ -68,60 +89,93 @@
                 </div>
             </nav> -->
 
-            <div style="flex:1;justify-content: space-around;">
-                <h2>MAIL BOX</h2>
-                <h5 id="emailid"></h5>
-            </div>
+        <div style="flex: 1; justify-content: space-around">
+          <h2>MAIL BOX</h2>
+          <h5 id="emailid"></h5>
+        </div>
 
-            <div class="table-responsive" style="padding: 20px;">
-                <table class="table table-striped table-sm">
-                    <thead>
-                        <tr>
-                            <th scope="col">ID</th>
-                            <th scope="col">SUBJECT</th>
-                            <th scope="col">FROM</th>
-                            <th scope="col">DELETE</th>
-                        </tr>
-                    </thead>
-                    <tbody id="email_list">
-                    </tbody>
-                </table>
-            </div>
+        <div class="table-responsive" style="padding: 20px">
+          <table class="table table-striped table-sm">
+            <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">SUBJECT</th>
+                <th scope="col">FROM</th>
+                <th scope="col">DELETE</th>
+              </tr>
+            </thead>
+            <tbody id="email_list"></tbody>
+          </table>
         </div>
+      </div>
     </div>
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog  modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel"></h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div id="modalbody" class="modal-body">
-                </div>
-            </div>
+    <div
+      class="modal fade"
+      id="exampleModal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel"></h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div id="modalbody" class="modal-body"></div>
         </div>
+      </div>
     </div>
 
-    <div class="modal fade" id="LoginModal" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Login Panel</h5>
-                </div>
-                <div class="modal-body">
-                    <div class="row" style="padding-right:20px">
-                        <input type="text" class="form-control" placeholder="Username" id="username"
-                            aria-label="Username" style="margin: 10px;">
-                        <input type="text" class="form-control" placeholder="Password" id="password"
-                            aria-label="Password" style="margin: 10px;">
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" onclick="Login()"
-                        data-bs-dismiss="modal">Login</button>
-                </div>
+    <div
+      class="modal fade"
+      id="LoginModal"
+      tabindex="-1"
+      aria-labelledby="ModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Login Panel</h5>
+          </div>
+          <div class="modal-body">
+            <div class="row" style="padding-right: 20px">
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Username"
+                id="username"
+                aria-label="Username"
+                style="margin: 10px"
+              />
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Password"
+                id="password"
+                aria-label="Password"
+                style="margin: 10px"
+              />
             </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-primary"
+              onclick="Login()"
+              data-bs-dismiss="modal"
+            >
+              Login
+            </button>
+          </div>
         </div>
+      </div>
     </div>
 
     <!-- <tr data-bs-toggle="modal" data-bs-target="#exampleModal">
@@ -133,103 +187,122 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <script>
-        let Token = ""
-        let IDS = []
-        let emailid = document.getElementById("emailid")
-        emailid.appendChild(document.createTextNode(`Email address : any_username@${window.location.hostname}`))
-        if (localStorage.getItem("access_token") == null) {
-            $(document).ready(function () {
-                $("#LoginModal").modal('show');
-            });
-        } else {
-            Token = localStorage.getItem("access_token")
-            FetchEmail(Token)
-        }
-        function Login(username = "hacksec", password = "hacksec") {
-            fetch(`http://${window.location.hostname}:6660/login`,
-                {
-                    headers: {
-                        'Accept': 'application/json',
-                        'Content-Type': 'application/json'
-                    },
-                    method: "POST",
-                    body: JSON.stringify({ username: document.getElementById("username").value, password: document.getElementById("password").value })
-                })
-                .then(response => response.json())
-                .then(data => {
-                    if (data["access_token"] == undefined) {
-                        window.location.reload()
-                    }
-                    else {
-                        Token = data["access_token"]
-                        console.log(Token)
-                        FetchEmail(Token)
-                        localStorage.setItem("access_token", Token)
-                    }
-                })
-                .catch(function (err) { console.log(err) })
-
-        }
-
-
-
-        function FetchEmail(Token) {
-            ws = new WebSocket(`ws://${window.location.hostname}:6660/mailbox?token=${Token}`);
-            ws.onmessage = (event) => {
-                let email_list = document.getElementById('email_list')
-                let data = JSON.parse(event.data)
-                data["email"].map(function (email) {
-                    if (IDS.includes(email[0])) {
-                        return true
-                    }
-                    let modalbody = document.getElementById('modalbody')
-                    var div = document.createElement("div");
-                    var div1 = document.createElement("div");
-                    var div2 = document.createElement("div");
-                    let newrow = email_list.insertRow()
-                    let newcell = newrow.insertCell()
-                    var newText = div.appendChild(document.createTextNode(email[0]));
-                    let newcell1 = newrow.insertCell()
-                    div1.appendChild(document.createTextNode(email[4]));
-                    let newcell2 = newrow.insertCell()
-                    div2.appendChild(document.createTextNode(email[1]));
-                    div.onclick = function () { OpenModal(email) }
-                    div1.onclick = function () { OpenModal(email) }
-                    div2.onclick = function () { OpenModal(email) }
-                    newcell.appendChild(div);
-                    newcell1.appendChild(div1);
-                    newcell2.appendChild(div2);
-                    let Delele = newrow.insertCell()
-                    let button = document.createElement("BUTTON")
-                    button.className = "btn btn-danger"
-                    button.innerHTML = "Delete"
-                    button.onclick = function () { DeleteEmail(email[0], Token) }
-                    Delele.appendChild(button)
-                    IDS.push(email[0])
-                })
-
+      let Token = "";
+      let IDS = [];
+      let emailid = document.getElementById("emailid");
+      emailid.appendChild(
+        document.createTextNode(
+          `Email address : ${
+            Math.random().toString(36).substr(2, 9) +
+            "@" +
+            window.location.hostname
+          }`
+        )
+      );
+      if (localStorage.getItem("access_token") == null) {
+        $(document).ready(function () {
+          $("#LoginModal").modal("show");
+        });
+      } else {
+        Token = localStorage.getItem("access_token");
+        FetchEmail(Token);
+      }
+      function Login(username = "hacksec", password = "hacksec") {
+        fetch(`http://${window.location.hostname}:6660/login`, {
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          method: "POST",
+          body: JSON.stringify({
+            username: document.getElementById("username").value,
+            password: document.getElementById("password").value,
+          }),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            if (data["access_token"] == undefined) {
+              window.location.reload();
+            } else {
+              Token = data["access_token"];
+              console.log(Token);
+              FetchEmail(Token);
+              localStorage.setItem("access_token", Token);
             }
-        }
-        function DeleteEmail(id, Token) {
-            ws = new WebSocket(`ws://${window.location.hostname}:6660/mailbox/delete/${id}?token=${Token}`);
-            ws.onmessage = (event) => {
-                console.log(event.data)
-                window.location.reload()
+          })
+          .catch(function (err) {
+            console.log(err);
+          });
+      }
+
+      function FetchEmail(Token) {
+        ws = new WebSocket(
+          `ws://${window.location.hostname}:6660/mailbox?token=${Token}`
+        );
+        ws.onmessage = (event) => {
+          let email_list = document.getElementById("email_list");
+          let data = JSON.parse(event.data);
+          data["email"].map(function (email) {
+            if (IDS.includes(email[0])) {
+              return true;
             }
-        }
-        function OpenModal(email) {
-            let modalbody = document.getElementById('modalbody')
-            let modalheader = document.getElementById('exampleModalLabel')
-            modalbody.innerHTML = email[5]
-            modalheader.innerText = email[4]
-            $("#exampleModal").modal('show');
-        }
-        setInterval(function () {
-            FetchEmail(Token)
-        }, 4000);
+            let modalbody = document.getElementById("modalbody");
+            var div = document.createElement("div");
+            var div1 = document.createElement("div");
+            var div2 = document.createElement("div");
+            let newrow = email_list.insertRow();
+            let newcell = newrow.insertCell();
+            var newText = div.appendChild(document.createTextNode(email[0]));
+            let newcell1 = newrow.insertCell();
+            div1.appendChild(document.createTextNode(email[4]));
+            let newcell2 = newrow.insertCell();
+            div2.appendChild(document.createTextNode(email[1]));
+            div.onclick = function () {
+              OpenModal(email);
+            };
+            div1.onclick = function () {
+              OpenModal(email);
+            };
+            div2.onclick = function () {
+              OpenModal(email);
+            };
+            newcell.appendChild(div);
+            newcell1.appendChild(div1);
+            newcell2.appendChild(div2);
+            let Delele = newrow.insertCell();
+            let button = document.createElement("BUTTON");
+            button.className = "btn btn-danger";
+            button.innerHTML = "Delete";
+            button.onclick = function () {
+              DeleteEmail(email[0], Token);
+            };
+            Delele.appendChild(button);
+            IDS.push(email[0]);
+          });
+        };
+      }
+      function DeleteEmail(id, Token) {
+        ws = new WebSocket(
+          `ws://${window.location.hostname}:6660/mailbox/delete/${id}?token=${Token}`
+        );
+        ws.onmessage = (event) => {
+          console.log(event.data);
+          window.location.reload();
+        };
+      }
+      function OpenModal(email) {
+        let modalbody = document.getElementById("modalbody");
+        let modalheader = document.getElementById("exampleModalLabel");
+        modalbody.innerHTML = email[5];
+        modalheader.innerText = email[4];
+        $("#exampleModal").modal("show");
+      }
+      setInterval(function () {
+        FetchEmail(Token);
+      }, 4000);
     </script>
     <script src="./bootstrap.bundle.min.js"></script>
-
-</body>
-
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+  </body>
 </html>

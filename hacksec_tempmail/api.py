@@ -4,6 +4,7 @@ from fastapi.responses import JSONResponse, RedirectResponse
 from fastapi_jwt_auth import AuthJWT
 from fastapi_jwt_auth.exceptions import AuthJWTException
 from starlette.websockets import WebSocketDisconnect
+from fastapi.security import HTTPBearer, HTTPBasic, OAuth2PasswordBearer, OAuth2PasswordRequestForm
 import database
 from pydantic import BaseModel
 from json import dumps
@@ -14,6 +15,7 @@ import binascii
 import os
 
 app = FastAPI()
+auth_schema = HTTPBearer(auto_error=False)
 app.mount("/home", StaticFiles(directory="hacksec-webmail",
           html=True), name="hacksec-webmail")
 database = database.db()
@@ -79,6 +81,16 @@ async def websocket(websocket: WebSocket, token: str = Query(...), Authorize: Au
         manager.disconnect(websocket)
 
 
+@app.get('/mailbox')
+async def mailbox(Authorize: AuthJWT = Depends(auth_schema)):
+    """Get all emails from the database"""
+    Authorize.jwt_required()
+    try:
+        return JSONResponse(dumps({"success": True, "email": database.view()}))
+    except Exception as err:
+        return JSONResponse({"success": False, "error": str(err)})
+
+
 @app.websocket('/mailbox/{id}')
 async def websocket(websocket: WebSocket, id: int, token: str = Query(...), Authorize: AuthJWT = Depends()):
     await websocket.accept()
@@ -90,6 +102,16 @@ async def websocket(websocket: WebSocket, id: int, token: str = Query(...), Auth
         await websocket.close()
     except WebSocketDisconnect:
         manager.disconnect(websocket)
+
+
+@app.get('/mailbox/{id}')
+async def mailbox_id(id: int, Authorize: AuthJWT = Depends(auth_schema)):
+    """Get a single email with given id"""
+    Authorize.jwt_required()
+    try:
+        return JSONResponse(dumps({"success": True, "email": database.view_single(id)}))
+    except Exception as err:
+        return JSONResponse({"success": False, "error": str(err)})
 
 
 @app.websocket('/mailbox/search/{search_term}')
@@ -105,6 +127,16 @@ async def websocket(websocket: WebSocket, search_term: str, token: str = Query(.
         manager.disconnect(websocket)
 
 
+@app.get('/mailbox/search/{search_term}')
+async def mailbox_search(search_term: str, Authorize: AuthJWT = Depends(auth_schema)):
+    """Search email with a search term"""
+    Authorize.jwt_required()
+    try:
+        return JSONResponse(dumps({"success": True, "email": database.search(search_term)}))
+    except Exception as err:
+        return JSONResponse({"success": False, "error": str(err)})
+
+
 @app.websocket('/mailbox/delete/{id}')
 async def websocket(websocket: WebSocket, id: int, token: str = Query(...), Authorize: AuthJWT = Depends()):
     await websocket.accept()
@@ -118,8 +150,18 @@ async def websocket(websocket: WebSocket, id: int, token: str = Query(...), Auth
         manager.disconnect(websocket)
 
 
+@app.get('/mailbox/delete/{id}')
+async def mailbox_del(id: int, Authorize: AuthJWT = Depends(auth_schema)):
+    """Delete an email with the given id"""
+    Authorize.jwt_required()
+    try:
+        return JSONResponse(dumps({"success": True, "email": database.delete(id)}))
+    except Exception as err:
+        return JSONResponse({"success": False, "error": str(err)})
+
+
 @app.websocket('/mailbox/delete')
-async def websocket(websocket: WebSocket, id: int, token: str = Query(...), Authorize: AuthJWT = Depends()):
+async def websocket(websocket: WebSocket, token: str = Query(...), Authorize: AuthJWT = Depends()):
     await websocket.accept()
     try:
         Authorize.jwt_required("websocket", token=token)
@@ -131,8 +173,18 @@ async def websocket(websocket: WebSocket, id: int, token: str = Query(...), Auth
         manager.disconnect(websocket)
 
 
+@app.get('/mailbox/delete')
+async def mailbox_delete_all(Authorize: AuthJWT = Depends(auth_schema)):
+    """Delete all emails"""
+    Authorize.jwt_required()
+    try:
+        return JSONResponse(dumps({"success": True, "email": database.delete_all()}))
+    except Exception as err:
+        return JSONResponse({"success": False, "error": str(err)})
+
+
 @app.post('/login')
-def login(user: User, Authorize: AuthJWT = Depends()):
+def login(user: User, Authorize: AuthJWT = Depends(auth_schema)):
     if user.username != auth["username"] or user.password != auth["password"]:
         raise HTTPException(status_code=401, detail="Bad username or password")
 
