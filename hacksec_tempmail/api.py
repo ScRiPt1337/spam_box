@@ -83,7 +83,7 @@ async def websocket(websocket: WebSocket, token: str = Query(...), Authorize: Au
 
 
 @app.get('/mailbox')
-async def mailbox(Authorize: AuthJWT = Depends(auth_schema)):
+async def mailbox(Authorize: AuthJWT = Depends(),Token = Depends(auth_schema)):
     """Get all emails from the database"""
     Authorize.jwt_required()
     try:
@@ -106,7 +106,7 @@ async def websocket(websocket: WebSocket, id: int, token: str = Query(...), Auth
 
 
 @app.get('/mailbox/{id}')
-async def mailbox_id(id: int, Authorize: AuthJWT = Depends(auth_schema)):
+async def mailbox_id(id: int, Authorize: AuthJWT = Depends(),Token = Depends(auth_schema)):
     """Get a single email with given id"""
     Authorize.jwt_required()
     try:
@@ -129,7 +129,7 @@ async def websocket(websocket: WebSocket, search_term: str, token: str = Query(.
 
 
 @app.get('/mailbox/search/{search_term}')
-async def mailbox_search(search_term: str, Authorize: AuthJWT = Depends(auth_schema)):
+async def mailbox_search(search_term: str, Authorize: AuthJWT = Depends(),Token = Depends(auth_schema)):
     """Search email with a search term"""
     Authorize.jwt_required()
     try:
@@ -152,7 +152,7 @@ async def websocket(websocket: WebSocket, id: int, token: str = Query(...), Auth
 
 
 @app.get('/mailbox/delete/{id}')
-async def mailbox_del(id: int, Authorize: AuthJWT = Depends(auth_schema)):
+async def mailbox_del(id: int, Authorize: AuthJWT = Depends(),Token = Depends(auth_schema)):
     """Delete an email with the given id"""
     Authorize.jwt_required()
     try:
@@ -175,7 +175,7 @@ async def websocket(websocket: WebSocket, token: str = Query(...), Authorize: Au
 
 
 @app.get('/mailbox/delete')
-async def mailbox_delete_all(Authorize: AuthJWT = Depends(auth_schema)):
+async def mailbox_delete_all(Authorize: AuthJWT = Depends(),Token = Depends(auth_schema)):
     """Delete all emails"""
     Authorize.jwt_required()
     try:
@@ -185,7 +185,7 @@ async def mailbox_delete_all(Authorize: AuthJWT = Depends(auth_schema)):
 
 
 @app.post('/login')
-def login(user: User, Authorize: AuthJWT = Depends()):
+def login(user: User, Authorize: AuthJWT = Depends(),Token = Depends(auth_schema)):
     if user.username != auth["username"] or user.password != auth["password"]:
         raise HTTPException(status_code=401, detail="Bad username or password")
 
