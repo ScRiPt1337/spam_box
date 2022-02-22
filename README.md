@@ -25,6 +25,9 @@ curl -s -L https://raw.githubusercontent.com/ScRiPt1337/spam_box/main/install.sh
 ### Demo with setup tutorial
 - https://youtu.be/VqhIQxck9O4
 
+### Live Demo
+- http://hacksec.ml:6660/home/
+
 ### Contact info 
 - Email : script@hacksec.in
 - visit our website : https://www.hacksec.in
