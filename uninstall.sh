@@ -10,3 +10,5 @@ sudo systemctl stop hacksec_mail.service
 sudo systemctl stop hacksec_server.service
 sudo systemctl disable hacksec_server.service
 sudo systemctl disable hacksec_mail.service
+rm /etc/systemd/system/hacksec_server.service
+rm /etc/systemd/system/hacksec_mail.service
